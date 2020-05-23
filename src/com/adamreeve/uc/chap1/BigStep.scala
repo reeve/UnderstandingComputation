@@ -7,31 +7,31 @@ case class SimpleBoolean(value: Boolean) extends ValueExpression
 
 // --- COMPLEX EXPRESSIONS
 case class Add(left: Expression, right: Expression) extends BinaryOp[SimpleNumber, SimpleNumber] {
-  def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(left.value + right.value)
+  override def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(left.value + right.value)
 }
 
 case class Subtract(left: Expression, right: Expression) extends BinaryOp[SimpleNumber, SimpleNumber] {
-  def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(left.value - right.value)
+  override def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(left.value - right.value)
 }
 
 case class Multiply(left: Expression, right: Expression) extends BinaryOp[SimpleNumber, SimpleNumber] {
-  def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(left.value * right.value)
+  override def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(left.value * right.value)
 }
 
 case class Divide(left: Expression, right: Expression) extends BinaryOp[SimpleNumber, SimpleNumber] {
-  def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(Math.round(left.value / right.value))
+  override def perform(left: SimpleNumber, right: SimpleNumber): SimpleNumber = SimpleNumber(Math.round(left.value / right.value))
 }
 
 case class And(left: Expression, right: Expression) extends BinaryOp[SimpleBoolean, SimpleBoolean] {
-  def perform(left: SimpleBoolean, right: SimpleBoolean): SimpleBoolean = SimpleBoolean(left.value && right.value)
+  override def perform(left: SimpleBoolean, right: SimpleBoolean): SimpleBoolean = SimpleBoolean(left.value && right.value)
 }
 
 case class Or(left: Expression, right: Expression) extends BinaryOp[SimpleBoolean, SimpleBoolean] {
-  def perform(left: SimpleBoolean, right: SimpleBoolean): SimpleBoolean = SimpleBoolean(left.value || right.value)
+  override def perform(left: SimpleBoolean, right: SimpleBoolean): SimpleBoolean = SimpleBoolean(left.value || right.value)
 }
 
 case class LessThan(left: Expression, right: Expression) extends BinaryOp[SimpleNumber, SimpleBoolean] {
-  def perform(left: SimpleNumber, right: SimpleNumber): SimpleBoolean = SimpleBoolean(left.value < right.value)
+  override def perform(left: SimpleNumber, right: SimpleNumber): SimpleBoolean = SimpleBoolean(left.value < right.value)
 }
 
 case class GreaterThan(left: Expression, right: Expression) extends BinaryOp[SimpleNumber, SimpleBoolean] {
